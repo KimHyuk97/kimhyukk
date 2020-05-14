@@ -72,7 +72,7 @@ public class EX04_Airray {
 	   int avg=0;
 	   
 	   
-	     
+	     /dsds/dsdsd/dsds
 	     
 	     
 	
