@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="UTF-8"/>
+   <title>Element(HTML object)의 name 활용</title>
+   <!-- 2. script later -->
+   <script>
+      function input(){
+    	  var JStu = document.getElementsByName("stu")[0].value;
+    	  var JKor = parseInt(document.getElementsByName("kor")[0].value);
+    	  var JEng = parseInt(document.getElementsByName("eng")[0].value);
+    	  var JMat = parseInt(document.getElementsByName("mat")[0].value);
+        var tot=calSum(JKor,JEng,JMat);
+        var avg=calAvg(tot);
+        createObject("input","text","number",1);
+        createObject("input","text","stu",JStu);
+        createObject("input","text","kor",JKor);
+        createObject("input","text","eng",JEng);
+        createObject("input","text","mat",JMat);
+        createObject("input","text","tot",tot);
+        createObject("input","text","avg",avg);
+        createObject("br");
+    	  }
+      function calSum(JKor,JEng,JMat){
+             return(JKor+JEng+JMat);
+    	}
+      function calAvg(tot){
+    	      return tot/3;
+    	}
+      function createObject(tagName,type,name,value){
+    	  var obj = document.createElement(tagName);
+    	  obj.type = type;
+    	  obj.name = name;
+    	  obj.value = value;
+    	  document.body.appendChild(obj);
+      }
+   </script>
+   <style>
+       h1, input {text-align:center;}
+   </style>  
+  </head>
+  <body>
+  <!-- 1. html object -->
+    <h1>학생별 과목점수 입력</h1>
+      <input type="text" name="stu" placeholder="학생성명">
+      <input type="text" name="kor" placeholder="국어점수">
+      <input type="text" name="eng" placeholder="영어점수">
+      <input type="text" name="mat" placeholder="수학점수">      
+      
+      <button onClick="input()"> 성적입력 </button>
+      <hr/>
+
+  </body> 
+</html>

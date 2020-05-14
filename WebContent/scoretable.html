@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>nam활욜</title>
+    <script>
+       var num = 0;
+       function input(){
+    	      var jinfo =document.getElementsByName("info");
+    	      
+            var tot  =calSum(jinfo,1);
+    	      var avg  =calAvg(jinfo,1,jinfo.length-1);
+    	      num=num+1;
+    	      createObject("input","text","number",num);
+    	      createObject("input","text","stu",jinfo[0].value);
+    	      createObject("input","text","kor",jinfo[1].value);
+    	      createObject("input","text","eng",jinfo[2].value);
+    	      createObject("input","text","mat",jinfo[3].value);
+    	      createObject("input","text","tot",tot);
+    	      createObject("input","text","avg",avg);
+    	      createObject("br");
+    	        
+    	      for(i=0; i<jinfo.length;i++){
+    	        	clearValue(jinfo[i]);
+    	      }
+    	 } 
+       function calSum(jinfo,start){
+    	       var sum=0;
+    	       for(i=start; i<jinfo.length; i++){
+    	    	   sum=sum+parseInt(jinfo[i].value);
+    	       }
+    	       return sum;
+       }
+       function calAvg(jinfo,start,a){
+            return calSum(jinfo,start)/(a);
+       }
+       function createObject(tagName,type,name,value){
+    	       var obj=document.createElement(tagName);
+    	       obj.type=type;
+    	       obj.name=name;
+    	       obj.value=value;
+    	       document.body.appendChild(obj);
+       }
+       function clearValue(obj){
+    	   obj.value="";
+       }  
+			 function scoreResult(){
+			     createObject("hr");
+
+			    
+			     var kor=document.getElementsByName("kor");
+			     var eng=document.getElementsByName("eng");
+			     var mat=document.getElementsByName("mat");
+			     var tot=document.getElementsByName("tot");
+			     var avg=document.getElementsByName("avg");
+			     
+			     createObject("input","text","","");
+			     createObject("input","text","","");
+			     createObject("input","text","kor",calAvg(kor,0,kor.length));
+			     createObject("input","text","eng",calAvg(eng,0,eng.length));
+			     createObject("input","text","mat",calAvg(mat,0,mat.length));
+			     createObject("input","text","tot",calAvg(tot,0,tot.length));
+			     createObject("input","text","avg",calAvg(avg,0,avg.length));
+			 }
+    </script>
+ </head>
+  <body>
+     <h1>과목별 학생성적</h1>
+     <input type="text" name="info"  placeholder="학생성명">
+     <input type="text" name="info"  placeholder="국어점수">
+     <input type="text" name="info"  placeholder="영어점수">
+     <input type="text" name="info"  placeholder="수학점수">
+     <button onClick="input()">확인</button>
+     <button onClick="scoreResult()">결과</button>
+     <hr/>
+
+  </body>
+</html>
